@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DataReservasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DataReservasiController extends Controller
 {
@@ -17,6 +18,20 @@ class DataReservasiController extends Controller
         return view('resepsionis.dataReservasi', [
             'dataReservasi' => DataReservasi::latest()->get()
         ]);
+    }
+
+    public function cari(Request $request)
+    {
+        // menangkap data pencarian
+		$cari = $request->cari;
+
+        // mengambil data dari table pegawai sesuai pencarian data
+        $dataReservasi = DB::table('pemesanan')
+        ->where('nama_tamu','like',"%".$cari."%")
+        ->paginate();
+
+        // mengirim data pegawai ke view index
+        return view('resepsionis.dataReservasi',['dataReservasi' => $dataReservasi]);
     }
 
     /**

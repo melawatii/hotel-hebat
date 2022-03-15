@@ -22,6 +22,9 @@
             .content-wrapper {
                 background: linear-gradient(to bottom, #9cafe5, #74e9d5);
             }
+            .navbar .form-control {
+                width: 40%;
+            }
         </style>
     </head>
     <body>
@@ -77,8 +80,9 @@
                     </button>
                     <ul class="navbar-nav w-100">
                         <li class="nav-item w-100">
-                            <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                                <input type="search" class="form-control" placeholder="Cari nama tamu ..." autofocus>
+                            <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search" action="/dataReservasi/search" method="GET">
+                                <input type="search" name="cari" class="form-control" placeholder="Cari nama tamu ..." autofocus value="{{ old('cari') }}">
+                                <button type="submit" class="btn btn-success">&nbsp;&nbsp;<i class="mdi mdi-account-search"></i></button>
                             </form>
                         </li>
                     </ul>

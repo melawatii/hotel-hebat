@@ -12,7 +12,7 @@
                                 <input type="date" class="form-control" name="fromdate">
                             </div>
                             <div class="col-md-auto">
-                                <button type="button" class="btn btn-warning">Filter</button>
+                                <button type="button" class="btn btn-warning">&nbsp;<i class="mdi mdi-filter"></i></button>
                             </div>
                             <div class="col col-lg-2">
                                 <input type="date" class="form-control" name="todate">

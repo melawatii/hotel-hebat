@@ -36,7 +36,8 @@ Route::resource('dataKamar', DataKamarController::class);
 Route::resource('fasilitasHotel', FasilitasHotelController::class);
 Route::resource('fasilitasKamar', FasilitasKamarController::class);
 
-Route::resource('dataReservasi', DataReservasiController::class);
+Route::get('/dataReservasi', [DataReservasiController::class, 'index']);
+Route::get('/dataReservasi/search', [DataReservasiController::class, 'cari']);
 
 Auth::routes();
 Route::get('/dataKamar', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin.home')->middleware('is_admin');
