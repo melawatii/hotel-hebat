@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FasilitasHotel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FasilitasHotelController extends Controller
 {
@@ -87,14 +88,23 @@ class FasilitasHotelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $fasilitashotel = FasilitasHotel::firstWhere('id', $id);
-        $request->validate([
+        $fasilitashotel = FasilitasHotel::find($id);
+        $rules =[
             'nama_fasilitas' => ['required', 'max:255', 'string'],
-            'image' => 'image|file|max:1024',
             'keterangan' => ['required', 'max:255', 'string'],
-        ]);
+        ];
+        if ($request->image) {
+            $rules['image'] = ['image', 'max:2048'];
+        }
 
-        $fasilitashotel->update($request->all());
+        $validatedData = $request->validate($rules);
+
+        if ($request->image) {
+            $validatedData['image'] = $request->file('image')->store('post-images');
+            Storage::delete($fasilitashotel->image);
+        }
+
+        $fasilitashotel->update($validatedData);
 
         return redirect('/fasilitasHotel')->with('message', 'Data berhasil diubah!');
     }

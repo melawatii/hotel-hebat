@@ -35,6 +35,7 @@ Route::resource('/pesanReservasi', PemesananController::class);
 Route::resource('dataKamar', DataKamarController::class);
 Route::resource('fasilitasHotel', FasilitasHotelController::class);
 Route::resource('fasilitasKamar', FasilitasKamarController::class);
+
 Route::resource('dataReservasi', DataReservasiController::class);
 
 Auth::routes();
