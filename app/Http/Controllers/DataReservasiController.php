@@ -34,6 +34,22 @@ class DataReservasiController extends Controller
         return view('resepsionis.dataReservasi',['dataReservasi' => $dataReservasi]);
     }
 
+    public function tanggal(Request $request)
+    {
+        // menangkap data pencarian
+		$fromdate = $request->fromdate;
+		$todate = $request->todate;
+
+        // mengambil data dari table pegawai sesuai pencarian data
+        $dataReservasi = DB::table('pemesanan')
+        ->where('tgl_check_in','like',"%".$fromdate."%")
+        ->where('tgl_check_out','like',"%".$todate."%")
+        ->paginate();
+
+        // mengirim data pegawai ke view index
+        return view('resepsionis.dataReservasi',['dataReservasi' => $dataReservasi]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

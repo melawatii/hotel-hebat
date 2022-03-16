@@ -6,16 +6,16 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title mb-5">Data Reservasi</h4>
-                    <form action="" method="get">
+                    <form  action="/dataReservasi/filter" method="GET">
                         <div class="row justify-content-md-center mb-4">
                             <div class="col col-lg-2">
-                                <input type="date" class="form-control" name="fromdate">
+                                <input type="date" class="form-control" name="fromdate" value="{{ old('fromdate') }}">
                             </div>
                             <div class="col-md-auto">
-                                <button type="button" class="btn btn-warning">&nbsp;<i class="mdi mdi-filter"></i></button>
+                                <button type="submit" class="btn btn-warning">&nbsp;<i class="mdi mdi-filter"></i></button>
                             </div>
                             <div class="col col-lg-2">
-                                <input type="date" class="form-control" name="todate">
+                                <input type="date" class="form-control" name="todate" value="{{ old('todate') }}">
                             </div>
                         </div>
                     </form>
