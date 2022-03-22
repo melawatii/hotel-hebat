@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DataReservasi;
 use App\Models\DataKamar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PemesananController extends Controller
 {
@@ -97,5 +98,12 @@ class PemesananController extends Controller
     public function destroy(DataReservasi $dataReservasi)
     {
         //
+    }
+
+    public function cetakBukti()
+    { 
+        $posts = DataReservasi::whereRaw('id = (select max(`id`) from pemesanan)')->get();
+        
+        return view('tamu.bukti', ['posts' => $posts]);
     }
 }

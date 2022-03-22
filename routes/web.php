@@ -24,12 +24,6 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/cetak', function () {
-    return view('tamu.bukti', [
-        'title' => 'Cetak Bukti'
-    ]);
-});
-
 Route::resource('/pesanReservasi', PemesananController::class);
 
 Route::resource('dataKamar', DataKamarController::class);
@@ -39,6 +33,8 @@ Route::resource('fasilitasKamar', FasilitasKamarController::class);
 Route::get('/dataReservasi', [DataReservasiController::class, 'index']);
 Route::get('/dataReservasi/search', [DataReservasiController::class, 'cari']);
 Route::get('/dataReservasi/filter', [DataReservasiController::class, 'tanggal']);
+
+Route::get('/cetak', [PemesananController::class, 'cetakBukti']);
 
 Auth::routes();
 Route::get('/dataKamar', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin.home')->middleware('is_admin');
