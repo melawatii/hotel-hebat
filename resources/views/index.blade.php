@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>{{ $title }}</title>
+    <title>Hotel Hebat | Mudah & Nyaman</title>
 
     <meta content="" name="description">
     <meta content="" name="keywords">
@@ -158,51 +158,18 @@
                 </section>
 
                 <div class="section-title" data-aos="fade-up">
-                    <p><strong>Terdiri dari beberapa jenis fasilitas yang diberikan :</strong></p>
+                    <p><strong>Terdiri dari beberapa jenis fasilitas kamar yang diberikan :</strong></p>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-                            <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                            <h4 class="title"><a href="">Standar Room</a></h4>
-                            <p class="description">Kamar hotel yang memiliki fasilitas standar seperti televisi, meja, kamar mandi, hingga lemari es.</p>
+                    @foreach($fasilitasKamar as $row)
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                                <div class="icon"><i class="bx bxl-dribbble"></i></div>
+                                <h4 class="title"><a href=""> {{ $row->tipe_kamar }} </a></h4>
+                                <p class="description"> {{ $row->fasilitas }} </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-                            <div class="icon"><i class="bx bx-file"></i></div>
-                            <h4 class="title"><a href="">Superior Room</a></h4>
-                            <p class="description">Kamar hotel yang lebih baik dari sisi fasilitas hingga ukuran yang diberikan dibandingkan standar room.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-                            <div class="icon"><i class="bx bx-tachometer"></i></div>
-                            <h4 class="title"><a href="">Deluxe Room</a></h4>
-                            <p class="description">Kamar hotel yang di desain lebih menarik dan lengkap fasilitasnya dibandingkan standar dan superior room.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-                            <div class="icon"><i class="bx bx-world"></i></div>
-                            <h4 class="title"><a href="">Junior Suit Room</a></h4>
-                            <p class="description">Kamar hotel yang memiliki fasilitas seperti tempat duduk atau ruang tamu yang terpisah dengan ruang tidur.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box" data-aos="fade-up" data-aos-delay="500">
-                            <div class="icon"><i class="bi bi-activity"></i></div>
-                            <h4 class="title"><a href="">Suit Room</a></h4>
-                            <p class="description">Kamar hotel yang bisa dikatakan mirip dengan sebuah apartemen kecil yang berada di dalam hotel.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                        <div class="icon-box" data-aos="fade-up" data-aos-delay="600">
-                            <div class="icon"><i class="bi bi-award-fill"></i></div>
-                            <h4 class="title"><a href="">Presidental Suit</a></h4>
-                            <p class="description">Kamar hotel yang memiliki pemandangan dan fasilitas terbaik yang ditawarkan oleh hotel.</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -222,54 +189,17 @@
         <section id="more-services" class="more-services">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 d-flex align-items-stretch">
-                        <div class="card" style='background-image: url("assets/homepage/img/restoran.jpg");' data-aos="fade-up" data-aos-delay="100">
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="">Restoran</a></h5>
-                                <p class="card-text">Suatu tempat atau bangunan yang diorganisir secara komersil, yang menyelenggarakan pelayanan dengan baik kepada semua konsumennya baik berupa makanan maupun minuman.</p>
+                    @foreach($fasilitasHotel as $row)
+                        <div class="col-md-6 d-flex align-items-stretch">
+                            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                                <img src="{{ asset('storage/' . $row->image) }}" alt=" {{ $row->nama_fasilitas }} " style="border-radius: 5px;">
+                                <div class="card-body">
+                                    <h5 class="card-title"><a> {{ $row->nama_fasilitas }} </a></h5>
+                                    <p class="card-text"> {{ $row->keterangan }} </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-                    <div class="card" style='background-image: url("assets/homepage/img/kolamrenang.jpg");' data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="">Kolam Renang</a></h5>
-                            <p class="card-text">Suatu kontruksi buatan yang dirancang untuk diisi dengan air dan digunakan untuk berenang, menyelam atau aktivitas air lainnya.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 d-flex align-items-stretch mt-4">
-                    <div class="card" style='background-image: url("assets/homepage/img/pijat.jpg");' data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="">SPA dan Pijat</a></h5>
-                            <p class="card-text">Suatu proses pemijatan yang dilakukan pada anggota tubuh, Spa dikenal memiliki banyak khasiat baik untuk kesehatan maupun kecantikan.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 d-flex align-items-stretch mt-4">
-                    <div class="card" style='background-image: url("assets/homepage/img/sauna.jpg");' data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="">Sauna</a></h5>
-                            <p class="card-text">Ruangan dengan suhu panas dan kering yang digunakan untuk membantu tubuh mengeluarkan keringat dan membakar lebih banyak kalori.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 d-flex align-items-stretch mt-4">
-                    <div class="card" style='background-image: url("assets/homepage/img/gym.jpg");' data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="">Pusat Kebugaran (Gym)</a></h5>
-                            <p class="card-text">Tempat atau lokasi untuk melakukan kegiatan latihan dan olahraga seperti layanan senam, atletik, dan ataupun juga kardio.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 d-flex align-items-stretch mt-4">
-                    <div class="card" style='background-image: url("assets/homepage/img/internet.jpg");' data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="">Akses internet Wi-Fi gratis</a></h5>
-                            <p class="card-text">Kemampuan suatu individu atau kelompok untuk tersambung ke jaringan internet menggunakan terminal komputer, komputer, atau perangkat lainnya.</p>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
                 </div>
             </div>
         </section>

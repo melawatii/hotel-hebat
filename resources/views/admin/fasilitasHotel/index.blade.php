@@ -15,7 +15,7 @@
                         </div>
                     @endif
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" style="table-layout: fixed; width: 100%">
                             <thead>
                                 <tr>
                                     <th> No. </th>

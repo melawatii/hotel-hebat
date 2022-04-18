@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FasilitasKamar;
+use App\Models\FasilitasHotel;
 use Illuminate\Http\Request;
 
 class FasilitasKamarController extends Controller
@@ -103,5 +104,13 @@ class FasilitasKamarController extends Controller
         $fasilitasKamar->delete();
 
         return redirect('/fasilitasKamar')->with('message', 'Data berhasil dihapus!');
+    }
+
+    public function homepage()
+    {
+        return view('index', [
+            'fasilitasKamar' => FasilitasKamar::latest()->get(),
+            'fasilitasHotel' => FasilitasHotel::latest()->get()
+        ]);
     }
 }

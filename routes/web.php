@@ -18,11 +18,9 @@ use App\Http\Controllers\PemesananController;
 |
 */
 
-Route::get('/', function () {
-    return view('index', [
-        'title' => 'Hotel Hebat | Mudah & Nyaman'
-    ]);
-});
+Route::get('/', 
+    [FasilitasKamarController::class, 'homepage']
+);
 
 Route::resource('/pesanReservasi', PemesananController::class);
 

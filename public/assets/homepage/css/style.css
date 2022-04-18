@@ -638,7 +638,7 @@ section {
 }
 .more-services .card {
   border: 0;
-  padding: 160px 20px 20px 20px;
+  padding: 0 20px 50px 20px;
   position: relative;
   width: 100%;
   background-size: cover;
@@ -646,6 +646,7 @@ section {
   background-position: center center;
 }
 .more-services .card-body {
+  margin: .5em;
   z-index: 10;
   background: rgba(255, 255, 255, 0.9);
   padding: 15px 30px;
